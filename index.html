@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      body {
+        background-color: #394049;
+      }
+      p {
+        font-weight: bold;
+        font-size: 20px;
+        padding: 20px;
+        font-family: "Courier New", Courier, monospace;
+        color: aliceblue;
+      }
+      /* Style for the code block */
+      pre {
+        background-color: #202b3a;
+        padding: 10px;
+        overflow-x: auto;
+        color: aliceblue;
+      }
+      code {
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1>Make a Backend server</h1>
+      <h2>Step by Step</h2>
+    </center>
+    <p>
+      1-npm init -y <br /><br />
+      2-make a entry point - make a file and name it app.js <br /><br />
+      3-npm install express <br /><br />
+      4-get this code in app.js
+    </p>
+
+    <pre><code>
+      // get this code in app.js
+      const express = require('express')
+      const app = express()
+      const port = 3000
+      
+      app.get('/', (req, res) => {
+        res.send('Hello World!')
+      })
+      
+      app.listen(port, () => {
+        console.log(`http://localhost:${port}`);
+      })
+    </code></pre>
+    <p>
+      5-npm install -g nodemon <br />
+      <br />
+      6-now you can run your server from tapping in the terminal (nodemon
+      app.js) <br />
+      <br />
+      // nodemon responsable to read all changes in our file <br />
+      <br />
+      // that's mean the server going to refresh every time we make changes
+      <br />
+      <br />
+      7-now we must make a folder named views and make file named home.html
+      inside it
+      <br /><br />
+      8-in app.js let's change res.send('Hello World!') with home file we did
+      create
+    </p>
+    <pre><code>
+      // get this code in app.js
+      const express = require('express')
+      const app = express()
+      const port = 3000
+      
+      app.get('/', (req, res) => {
+        res.sendFile("./views/home.html", {root: __dirname});
+      })
+      
+      app.listen(port, () => {
+        console.log(`http://localhost:${port}`);
+      })
+    </code></pre>
+  </body>
+</html>
