@@ -55,7 +55,7 @@
       })
     </code></pre>
     <p>
-      5-npm install -g nodemon <br />
+      5-(npm install -g nodemon) and (npm i nodemon) <br />
       <br />
       6-now you can run your server from tapping in the terminal (nodemon
       app.js) <br />
@@ -85,5 +85,103 @@
         console.log(`http://localhost:${port}`);
       })
     </code></pre>
+    <p>
+      9-open home.html and make input and button all inside a form like this
+      example
+    </p>
+
+    <div class="code-box">
+      <pre><code>
+      &lt;body&gt;
+       &lt;h1&gt;User Name&lt;/h1&gt; 
+        &lt;form action=""&gt; &lt;input
+        type="text" /&gt; 
+         &lt;button&gt;send to DB&lt;/button&gt; 
+        &lt;/form&gt;
+      &lt;/body&gt;
+    </code>
+    </pre>
+    </div>
+    <p>
+      9-npm i mongoose <br /><br />
+      10-let's call mongoose in our app.js file like this code
+    </p>
+    <pre><code>
+      // get this code in the top of app.js file
+      const mongoose = require('mongoose');
+    </code></pre>
+    <p>
+      11-let's link our project with mongoDB write this code in the bottom of
+      app.js file
+    </p>
+    <pre><code>
+      mongoose.connect("link from mongodb")
+      .then(() => {})
+      .catch((err) => {console.log(err)});
+    </code></pre>
+    <p>
+      12-go to mongodb.com and make acc then make new free project click on
+      build a database button <br /><br />
+      13- put a user name and copy the password he give you then click on add my
+      curent ip <br /><br />
+      14-go to network access and click on add ip adress then allow access from
+      anywhere and confirm <br /><br />
+      15-go to data base and connect and select drivers option then copy the
+      <br />
+      <br />
+      link that beggin with mongodb+serv:// then past it in the place of link
+      from mongodb in app.js <br />
+      <br />
+      16-your code will be like this
+    </p>
+    <pre><code>
+      const express = require("express");
+const mongoose = require("mongoose");
+const app = express();
+const port = 3000;
+
+app.get("/", (req, res) => {
+  res.sendFile("./views/home.html", { root: __dirname });
+});
+
+app.listen(port, () => {
+  console.log(`http://localhost:${port}`);
+});
+mongoose
+  .connect("mongodb+srv://youUserName:&lt;password&gt;@cluster0.190insn.mongodb.net/?retryWrites=true&w=majority")
+  .then(() => {})
+  .catch((err) => {
+    console.log(err);
+  });
+    </code></pre>
+    <p>
+      17-change the password that we save in step 13 in the password place and
+      write alldata in this place like this example
+    </p>
+    <pre><code>
+      .connect("mongodb+srv://youUserName:6V0z2azs589Wcxv@cluster0.190insn.mongodb.net/alldata?retryWrites=true&w=majority")
+    </code></pre>
+    <p>
+      18-then get app.listen code cut and past inside .then() in the connecting
+      to mongoDB side like this
+    </p>
+    <pre><code>
+      mongoose
+  .connect(
+    "mongodb+srv://Beveky:9V0z2ksqRzWL0cxv@cluster0.190insn.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`http://localhost:${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+    </code></pre>
+    <p>
+      19-npm install mongodb <br /><br />
+      20-now every thing work as well inchallah so lets send data to database
+    </p>
   </body>
 </html>
